@@ -35,6 +35,7 @@ services:
     volumes:
       - hopeiq_kb:/var/kb/
       - /etc/localtime:/etc/localtime:ro
+      - ./data:/data/
     command: hopeiq rpc
 
 volumes:

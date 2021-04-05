@@ -9,6 +9,7 @@ RUN apt-get install -y tesseract-ocr
 RUN apt-get install -y vim
 
 # Copy OntologyKB for models and client
-COPY . /tmp/hopeiq/
-RUN cd /tmp/hopeiq/ && python setup.py install
+COPY . /hopeiq/
+RUN cd /hopeiq/ && python setup.py install
+RUN rm -rf /hopeiq/
 

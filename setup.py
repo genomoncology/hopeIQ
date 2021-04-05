@@ -1,4 +1,4 @@
-from os import path, getcwd, listdir
+from os import path, listdir
 import re
 from pathlib import Path
 
@@ -22,7 +22,7 @@ def get_long_description():
 
 def get_dependency_links():
     links = []
-    iiq_path = path.join(path.dirname(__file__), "iiq")
+    iiq_path = path.join(path.dirname(__file__), "wheels")
 
     for item in listdir(iiq_path):
         if item.endswith(".whl"):

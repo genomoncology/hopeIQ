@@ -18,4 +18,5 @@ temp/
 venv/
 Pipfile.lock
 pyproject.toml
-iiq
+wheels
+data

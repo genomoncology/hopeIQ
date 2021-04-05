@@ -30,7 +30,7 @@ def bootstrap(
 
     igniteiq_jsonl = Path(__file__).parent.parent.parent / "iiq/igniteiq.jsonl"
     if not igniteiq_jsonl.exists():
-        igniteiq_jsonl = Path("/tmp/hopeiq/iiq/igniteiq.jsonl")
+        igniteiq_jsonl = Path("/data/iiq/igniteiq.jsonl")
         assert igniteiq_jsonl.exists(), "Could not find igniteiq.jsonl"
 
     commands.load(
