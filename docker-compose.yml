@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+
+  http:
+    container_name: hopeiq_http
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 8000:8000
+    depends_on:
+      - rpc
+    environment:
+      HOST: 0.0.0.0
+      ENTITYKB_RPC_HOST: hopeiq_rpc
+      ENTITYKB_ROOT: /var/kb/
+    volumes:
+      - hopeiq_kb:/var/kb/
+      - /etc/localtime:/etc/localtime:ro
+    command: uvicorn entitykb.http.prod:app --host 0.0.0.0 --port 8000
+
+  rpc:
+    container_name: hopeiq_rpc
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 3477:3477
+    environment:
+      ENTITYKB_RPC_HOST: 0.0.0.0
+      ENTITYKB_ROOT: /var/kb/
+    volumes:
+      - hopeiq_kb:/var/kb/
+      - /etc/localtime:/etc/localtime:ro
+    command: hopeiq rpc
+
+volumes:
+  hopeiq_kb:
