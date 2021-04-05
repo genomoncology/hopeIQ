@@ -28,10 +28,11 @@ def bootstrap(
         typer.echo(f"Clearing kb: `{root}`")
         commands.clear(root=root, force=True)
 
-    igniteiq_jsonl = Path(__file__).parent.parent.parent / "iiq/igniteiq.jsonl"
+    file_name = "igniteiq.jsonl.gz"
+    igniteiq_jsonl = Path(__file__).parent.parent.parent / "iiq" / file_name
     if not igniteiq_jsonl.exists():
-        igniteiq_jsonl = Path("/data/iiq/igniteiq.jsonl")
-        assert igniteiq_jsonl.exists(), "Could not find igniteiq.jsonl"
+        igniteiq_jsonl = Path("/data/iiq/") / file_name
+        assert igniteiq_jsonl.exists(), f"Could not find {file_name}"
 
     commands.load(
         in_file=igniteiq_jsonl,
