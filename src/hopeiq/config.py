@@ -26,6 +26,15 @@ default_config = Config(
                 "ontologykb.LymphNodesResolver",
             ],
             "filterers": ["ontologykb.CombinedFilterer"],
+        },
+        "mm": {
+            "extractor": "entitykb.DefaultExtractor",
+            "resolvers": [
+                "entitykb.TermResolver",
+                "entitykb.contrib.date.DateResolver",
+                "ontologykb.MeasurementResolver",
+            ],
+            "filterers": ["hopeiq.MMFilterer"]
         }
     },
 )
